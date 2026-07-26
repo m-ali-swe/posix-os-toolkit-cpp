@@ -1,6 +1,6 @@
 # Makefile for POSIX OS Lab Toolkit
 CXX = g++
-CXXFLAGS = -std=c++17 -Wall -Wextra -pthread
+CXXFLAGS = -std=c++20 -Wall -Wextra -pthread
 TARGET = OSLabToolkit
 SRCS = main_menu.cpp shell.cpp scheduler.cpp threads.cpp filesystem.cpp memory.cpp
 OBJS = $(SRCS:.cpp=.o)

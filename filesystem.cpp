@@ -156,6 +156,7 @@ private:
         std::string part;
         Directory* temp = root;
         Directory* prev = nullptr;
+        (void)prev;
 
          // Skip initial '/' if present
          if (path.size() > 0 && path[0] == '/') {
@@ -515,6 +516,7 @@ void displayWelcomeScreen() {
 }
 
 void displayMenu(const std::string& currentPath) {
+    (void)currentPath;
     std::cout << std::endl; // Space before menu
 cout << ConsoleGFX::CYAN;
 cout << "\n+--------------------------------------------+\n";

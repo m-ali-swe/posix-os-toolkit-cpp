@@ -11,40 +11,40 @@
 
 using namespace std;
 
-const string RESET = "\x1b[0m";    // Reset to default
-const string BOLD = "\x1b[1m";     // Bold/Bright
-const string CYAN = "\x1b[36m";    // Cyan foreground
-const string YELLOW = "\x1b[33m";  // Yellow foreground
-const string GREEN = "\x1b[32m";   // Green foreground
-const string MAGENTA = "\x1b[35m"; // Magenta foreground
-const string BLUE = "\x1b[34m";   // Blue foreground
+const string RESET   = "\x1b[0m";   // Reset
+const string BOLD    = "\x1b[1m";   // Bold
+const string CYAN    = "\x1b[36m";  // Cyan
+const string YELLOW  = "\x1b[33m";  // Yellow
+const string GREEN   = "\x1b[32m";  // Green
+const string MAGENTA = "\x1b[35m";  // Magenta
+const string BLUE    = "\x1b[34m";  // Blue
 
 void displayWelcomeBox() {
-    const string padding = "      ";
+    const string pad = "      ";
+    // Total inner width between '|' and '|' is exactly 66 characters
     string lines[] = {
-        padding + CYAN + "+------------------------------------------------------------------+" + RESET,
-        padding + CYAN + "|" + RESET + "                                                                  " + CYAN + "|" + RESET,
-        padding + CYAN + "|" + RESET + "           " + BOLD + YELLOW + "OS LAB TOOLKIT PROJECT - SPRING 2025" + RESET + "                   " + CYAN + "|" + RESET,
-        padding + CYAN + "|" + RESET + "                                                                  " + CYAN + "|" + RESET,
-        padding + CYAN + "|" + RESET + "             " + GREEN + "Developed with passion by:" + RESET + "                           " + CYAN + "|" + RESET,
-        padding + CYAN + "|" + RESET + "                                                                  " + CYAN + "|" + RESET,
-        padding + CYAN + "|" + RESET + "      1. Ahmad Shayan        -  " + BLUE + "CPU Scheduler" + RESET + "                     " + CYAN + "|" + RESET,
-        padding + CYAN + "|" + RESET + "      2. Muhammad Tayyab     -  " + BLUE + "Threads & Synchronization" + RESET + "         " + CYAN + "|" + RESET,
-        padding + CYAN + "|" + RESET + "      3. Muhammad Zohaib     -  " + BLUE + "File System Simulation" + RESET + "            " + CYAN + "|" + RESET,
-        padding + CYAN + "|" + RESET + "      4. Zain Ijaz           -  " + BLUE + "Memory Management" + RESET + "                 " + CYAN + "|" + RESET,
-        padding + CYAN + "|" + RESET + "      5. Muhammad Ali        -  " + BLUE + "Shell Terminal Interface" + RESET + "          " + CYAN + "|" + RESET,
-        padding + CYAN + "|" + RESET + "                                                                  " + CYAN + "|" + RESET,
-        padding + CYAN + "|" + RESET + "             " + BOLD + MAGENTA + "Let's build the kernel of tomorrow!" + RESET + "                  " + CYAN + "|" + RESET,
-        padding + CYAN + "|" + RESET + "                                                                  " + CYAN + "|" + RESET,
-        padding + CYAN + "+------------------------------------------------------------------+" + RESET
+        pad + CYAN + "+------------------------------------------------------------------+" + RESET,
+        pad + CYAN + "|" + RESET + "                                                                  " + CYAN + "|" + RESET,
+        pad + CYAN + "|" + RESET + "            " + BOLD + YELLOW + "POSIX OPERATING SYSTEMS TOOLKIT SUITE" + RESET + "                " + CYAN + "|" + RESET,
+        pad + CYAN + "|" + RESET + "                                                                  " + CYAN + "|" + RESET,
+        pad + CYAN + "|" + RESET + "               " + GREEN + "Systems Programming & Lab Suite" + RESET + "                  " + CYAN + "|" + RESET,
+        pad + CYAN + "|" + RESET + "                                                                  " + CYAN + "|" + RESET,
+        pad + CYAN + "|" + RESET + "      * " + BLUE + "POSIX UNIX Terminal Shell (fork, exec, pipe, dup2)" + RESET + "        " + CYAN + "|" + RESET,
+        pad + CYAN + "|" + RESET + "      * " + BLUE + "CPU Process Scheduler (FCFS, SJF, RR, Priority)" + RESET + "           " + CYAN + "|" + RESET,
+        pad + CYAN + "|" + RESET + "      * " + BLUE + "Multi-Threading & Concurrency Primitives" + RESET + "                  " + CYAN + "|" + RESET,
+        pad + CYAN + "|" + RESET + "      * " + BLUE + "Inode Virtual File System Simulation" + RESET + "                     " + CYAN + "|" + RESET,
+        pad + CYAN + "|" + RESET + "      * " + BLUE + "Virtual Memory & Page Table Management" + RESET + "                  " + CYAN + "|" + RESET,
+        pad + CYAN + "|" + RESET + "                                                                  " + CYAN + "|" + RESET,
+        pad + CYAN + "|" + RESET + "             " + BOLD + MAGENTA + "Systems Architecture & Low-Level C++" + RESET + "                 " + CYAN + "|" + RESET,
+        pad + CYAN + "|" + RESET + "                                                                  " + CYAN + "|" + RESET,
+        pad + CYAN + "+------------------------------------------------------------------+" + RESET
     };
 
     for (const string& line : lines) {
         cout << line << endl;
-        this_thread::sleep_for(chrono::milliseconds(100)); // animate line-by-line
+        this_thread::sleep_for(chrono::milliseconds(50));
     }
 }
-
 
 void show_menu() {
     cout << "\n" << BOLD << YELLOW << "===== OS Lab Toolkit Menu =====" << RESET << endl;
@@ -54,7 +54,7 @@ void show_menu() {
     cout << CYAN << "4. File System Simulation" << RESET << endl;
     cout << CYAN << "5. Memory Management" << RESET << endl;
     cout << CYAN << "0. Exit" << RESET << endl;
-    cout << GREEN << "Enter your choice: " << RESET; // Prompt in green
+    cout << GREEN << "Enter your choice: " << RESET;
 }
 
 int main() {
@@ -62,7 +62,7 @@ int main() {
     displayWelcomeBox();
     while (true) {
         show_menu();
-        cin >> choice;
+        if (!(cin >> choice)) break;
         system("clear");
         switch (choice) {
             case 1:
@@ -87,4 +87,5 @@ int main() {
                 cout << "Invalid choice. Try again.\n";
         }
     }
+    return 0;
 }

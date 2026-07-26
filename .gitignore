@@ -1,0 +1,17 @@
+# Build Executables & Artifacts
+OSLabToolkit
+*.o
+*.so
+*.dylib
+*.dll
+*.exe
+*.out
+*.a
+
+# Editor & OS Artifacts
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo

@@ -86,8 +86,8 @@ void firstFit(const vector<int>& blocks, const vector<int>& processes) {
     vector<bool> used(blocks.size(), false);
     vector<int> allocation(processes.size(), -1);
 
-    for (int i = 0; i < processes.size(); i++) {
-        for (int j = 0; j < blocks.size(); j++) {
+    for (size_t i = 0; i < processes.size(); i++) {
+        for (size_t j = 0; j < blocks.size(); j++) {
             if (!used[j] && blocks[j] >= processes[i]) {
                 allocation[i] = j;
                 used[j] = true;
@@ -97,7 +97,7 @@ void firstFit(const vector<int>& blocks, const vector<int>& processes) {
     }
 
     cout << "\n--- First Fit Allocation ---\n";
-    for (int i = 0; i < processes.size(); i++) {
+    for (size_t i = 0; i < processes.size(); i++) {
         if (allocation[i] != -1)
             cout << "Process " << i + 1 << " allocated to Block " << allocation[i] + 1 << endl;
         else
@@ -110,9 +110,9 @@ void bestFit(const vector<int>& blocks, const vector<int>& processes) {
     vector<bool> used(blocks.size(), false);
     vector<int> allocation(processes.size(), -1);
 
-    for (int i = 0; i < processes.size(); i++) {
+    for (size_t i = 0; i < processes.size(); i++) {
         int bestIndex = -1;
-        for (int j = 0; j < blocks.size(); j++) {
+        for (size_t j = 0; j < blocks.size(); j++) {
             if (!used[j] && blocks[j] >= processes[i]) {
                 if (bestIndex == -1 || blocks[j] < blocks[bestIndex])
                     bestIndex = j;
@@ -125,7 +125,7 @@ void bestFit(const vector<int>& blocks, const vector<int>& processes) {
     }
 
     cout << "\n--- Best Fit Allocation ---\n";
-    for (int i = 0; i < processes.size(); i++) {
+    for (size_t i = 0; i < processes.size(); i++) {
         if (allocation[i] != -1)
             cout << "Process " << i + 1 << " allocated to Block " << allocation[i] + 1 << endl;
         else
@@ -138,9 +138,9 @@ void worstFit(const vector<int>& blocks, const vector<int>& processes) {
     vector<bool> used(blocks.size(), false);
     vector<int> allocation(processes.size(), -1);
 
-    for (int i = 0; i < processes.size(); i++) {
+    for (size_t i = 0; i < processes.size(); i++) {
         int worstIndex = -1;
-        for (int j = 0; j < blocks.size(); j++) {
+        for (size_t j = 0; j < blocks.size(); j++) {
             if (!used[j] && blocks[j] >= processes[i]) {
                 if (worstIndex == -1 || blocks[j] > blocks[worstIndex])
                     worstIndex = j;
@@ -153,7 +153,7 @@ void worstFit(const vector<int>& blocks, const vector<int>& processes) {
     }
 
     cout << "\n--- Worst Fit Allocation ---\n";
-    for (int i = 0; i < processes.size(); i++) {
+    for (size_t i = 0; i < processes.size(); i++) {
         if (allocation[i] != -1)
             cout << "Process " << i + 1 << " allocated to Block " << allocation[i] + 1 << endl;
         else

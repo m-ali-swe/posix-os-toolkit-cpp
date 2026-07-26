@@ -1,32 +1,18 @@
 # 🐧 POSIX OS Toolkit & UNIX Shell Interface (C++)
 
-[![C++17](https://img.shields.io/badge/C%2B%2B-17-00599C?style=for-the-badge&logo=c%2B%2B)](https://isocpp.org/)
+[![C++20](https://img.shields.io/badge/C%2B%2B-20-00599C?style=for-the-badge&logo=c%2B%2B)](https://isocpp.org/)
 [![POSIX Standard](https://img.shields.io/badge/POSIX-1-000000?style=for-the-badge&logo=linux)](https://pubs.opengroup.org/onlinepubs/9699919799/)
 [![GCC / G++](https://img.shields.io/badge/Compiler-GCC_%2F_G%2B%2B-5C6F84?style=for-the-badge&logo=gnu)](https://gcc.gnu.org/)
 [![Linux / Unix](https://img.shields.io/badge/Platform-Linux_%2F_POSIX-FCC624?style=for-the-badge&logo=linux)](https://www.kernel.org/)
 
-**POSIX OS Toolkit** is a low-level Systems Programming & Operating Systems suite implemented in C++17. Developed during an Operating Systems Laboratory course, it combines an interactive POSIX-compliant UNIX Command Shell, a CPU Process Scheduling engine, a Multi-Thread Synchronization module, an Inode Virtual File System, and a Paging Memory Management simulator.
-
----
-
-## 👥 Authors & Team Module Breakdown
-
-This project was built as a collaborative OS Laboratory suite. Each core system component was assigned to specific team members:
-
-| Module Component | Lead Developer | Primary Implementation |
-| :--- | :--- | :--- |
-| 🐚 **POSIX Shell Terminal Interface** | **Muhammad Ali** *(Author)* | [`shell.cpp`](file:///d:/Workspace/repositories/personal/posix-os-toolkit-cpp/shell.cpp) & [`shell.h`](file:///d:/Workspace/repositories/personal/posix-os-toolkit-cpp/shell.h) |
-| ⏱️ **CPU Process Scheduler** | Ahmad Shayan | [`scheduler.cpp`](file:///d:/Workspace/repositories/personal/posix-os-toolkit-cpp/scheduler.cpp) |
-| 🧵 **Threading & Synchronization** | Muhammad Tayyab | [`threads.cpp`](file:///d:/Workspace/repositories/personal/posix-os-toolkit-cpp/threads.cpp) |
-| 📂 **Virtual File System Simulation** | Muhammad Zohaib | [`filesystem.cpp`](file:///d:/Workspace/repositories/personal/posix-os-toolkit-cpp/filesystem.cpp) |
-| 🧠 **Memory Management & Paging** | Zain Ijaz | [`memory.cpp`](file:///d:/Workspace/repositories/personal/posix-os-toolkit-cpp/memory.cpp) |
+**POSIX OS Toolkit** is a low-level Systems Programming & Operating Systems suite implemented in C++20. Developed as a collaborative team project during an Operating Systems course, it combines an interactive POSIX-compliant UNIX Command Shell, a CPU Process Scheduling engine, a Multi-Thread Synchronization module (using `std::binary_semaphore`), an Inode Virtual File System, and a Paging Memory Management simulator.
 
 ---
 
 ## 🛠️ Toolkit Modules Overview
 
 ### 1. 🐚 POSIX UNIX Shell Terminal Interface (`shell.cpp`)
-Engineered by **Muhammad Ali**, this module implements a functional interactive UNIX terminal shell using low-level POSIX system calls:
+Engineered as the primary terminal interface component, this module implements a functional interactive UNIX shell using low-level POSIX system calls:
 
 - **Process Creation & Replacement**:
   - Uses `fork()` to clone the current process into parent/child contexts.
@@ -61,7 +47,7 @@ Simulates process execution queues and evaluates CPU scheduling policy performan
 
 ### 3. 🧵 POSIX Threading & Concurrency (`threads.cpp`)
 Demonstrates multi-threaded execution and thread synchronization primitives:
-- **Primitives**: `std::thread`, `std::mutex`, `std::condition_variable`.
+- **Primitives**: `std::thread`, `std::mutex`, `std::condition_variable`, `std::binary_semaphore` (C++20).
 - **Classic Problems**: Bounded-buffer Producer-Consumer pattern and Readers-Writers synchronization avoiding race conditions.
 
 ---
@@ -111,14 +97,15 @@ posix-os-toolkit-cpp/
 ├── shell.h                 # Shell header file
 ├── scheduler.cpp           # CPU Process Scheduling algorithms (FCFS, SJF, RR, Priority)
 ├── scheduler.h             # Scheduler header file
-├── threads.cpp             # Threading & synchronization primitives (Mutex, CondVars)
+├── threads.cpp             # Threading & synchronization primitives (Mutex, Semaphore)
 ├── threads.h               # Threads header file
 ├── filesystem.cpp          # Virtual Inode File System simulation
 ├── filesystem.h            # File system header file
 ├── memory.cpp              # Virtual memory paging & page replacement (FIFO, LRU)
 ├── memory.h                # Memory manager header file
 ├── main_menu.cpp           # Animated interactive CLI menu entry point
-├── Makefile                # Build compilation script
+├── Makefile                # Build compilation script (C++20)
+├── .gitignore              # Git ignore rules for build artifacts
 └── README.md
 ```
 
@@ -127,27 +114,28 @@ posix-os-toolkit-cpp/
 ## 🛠️ Compilation & Execution Guide
 
 ### Prerequisites
-- **Compiler**: `g++` with C++17 support
+- **Compiler**: `g++` with **C++20** support (`GCC 11+`)
 - **OS Environment**: Linux, macOS, or Windows WSL (POSIX environment required for `unistd.h` system calls)
 
 ---
 
-### 1. Build with `make`
+### 1. Direct Compilation with `g++` (Recommended)
 
 ```bash
-# Compile project
-make
+# Compile all source files into the OSLabToolkit executable
+g++ -std=c++20 *.cpp -o OSLabToolkit -pthread
 
-# Execute OS Toolkit
+# Run executable
 ./OSLabToolkit
 ```
 
-### 2. Manual Compilation with `g++`
+### 2. Alternative Build with `make`
 
 ```bash
-g++ -std=c++17 main_menu.cpp shell.cpp scheduler.cpp threads.cpp filesystem.cpp memory.cpp -o OSLabToolkit -pthread
+# Compile using Makefile
+make
 
-# Run executable
+# Execute OS Toolkit
 ./OSLabToolkit
 ```
 

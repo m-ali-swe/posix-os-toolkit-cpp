@@ -22,7 +22,7 @@
 // Simple cross-platform getch alternative
 char GET_CHAR() {
     char buf = 0;
-    struct termios old = {0};
+    struct termios old{};
     fflush(stdout);
     if (tcgetattr(0, &old) < 0)
         perror("tcsetattr()");
@@ -758,6 +758,7 @@ void Priority_NonPreemptive(vector<Process> p) {
         pr.visited = false;
 
     int current_block_start_time = 0;
+    (void)current_block_start_time;
 
     while (completed < n) {
         int idx = -1;

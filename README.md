@@ -119,9 +119,13 @@ posix-os-toolkit-cpp/
 
 ---
 
-### 1. Direct Compilation with `g++` (Recommended)
+### 1. Clone & Build with `g++` (Recommended)
 
 ```bash
+# Clone the repository
+git clone https://github.com/m-ali-swe/posix-os-toolkit-cpp.git
+cd posix-os-toolkit-cpp
+
 # Compile all source files into the OSLabToolkit executable
 g++ -std=c++20 *.cpp -o OSLabToolkit -pthread
 

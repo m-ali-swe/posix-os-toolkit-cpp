@@ -9,10 +9,32 @@
 
 ---
 
+## 👥 Authorship & Technical Contributions
+
+This project was developed as a collaborative Operating Systems Laboratory team project. The primary systems module engineered by **Muhammad Ali (`m-ali-swe`)** is the **Interactive POSIX UNIX Shell Terminal Interface** ([`shell.cpp`](file:///d:/Workspace/repositories/personal/posix-os-toolkit-cpp/shell.cpp) & [`shell.h`](file:///d:/Workspace/repositories/personal/posix-os-toolkit-cpp/shell.h)):
+
+- 🐚 **Process Creation & Process Lifecycle Management**:
+  - Implemented low-level process cloning via `fork()` and process space replacement using `execvp()` with dynamic C-style argument pointers (`char** argv`).
+  - Added process synchronization with `waitpid()` to collect exit status codes and prevent zombie process accumulation.
+- ⚡ **Multi-Stage Inter-Process Pipeline Architecture (`|`)**:
+  - Engineered pipeline parsing and execution supporting multi-command chains (`cmd1 | cmd2 | cmd3`).
+  - Implemented data stream channeling via `pipe(int pipefd[2])` and file descriptor redirection using `dup2()`.
+- 📁 **File Descriptor I/O Redirection (`<`, `>`, `>>`)**:
+  - Built file redirection mechanisms handling input reading (`<`), output truncating (`>`), and output appending (`>>`) using POSIX `open()` flags (`O_RDONLY`, `O_WRONLY | O_CREAT | O_TRUNC/O_APPEND`).
+- ⚡ **Asynchronous Background Execution (`&`)**:
+  - Handled trailing `&` execution to run non-blocking child processes in background sub-shells.
+- 🛑 **Signal Trapping & Interrupt Handling (`SIGINT`)**:
+  - Built a custom signal handler for `SIGINT` (Ctrl+C) using `volatile sig_atomic_t` flags to prevent shell crash while preserving interactive prompt loops.
+- 💻 **Native Shell Built-ins & Dynamic Prompt**:
+  - Built native shell built-ins: `cd` (with `-` previous path tracking and `~` home resolution), `pwd` (using `getcwd()`), `history`, `echo`, and `exit`.
+  - Created an ANSI-colored dynamic terminal prompt `myShell@System:~/path$`.
+
+---
+
 ## 🛠️ Toolkit Modules Overview
 
 ### 1. 🐚 POSIX UNIX Shell Terminal Interface (`shell.cpp`)
-Engineered as the primary terminal interface component, this module implements a functional interactive UNIX shell using low-level POSIX system calls:
+Engineered by **Muhammad Ali**, this module implements a functional interactive UNIX shell using low-level POSIX system calls:
 
 - **Process Creation & Replacement**:
   - Uses `fork()` to clone the current process into parent/child contexts.

@@ -15,6 +15,20 @@ This toolkit was developed as a collaborative software engineering team project 
 
 ---
 
+## 🖼️ Application Interface Gallery
+
+### 1. POSIX Operating System Toolkit Main CLI Menu
+Animated interactive terminal menu (`main_menu.cpp`) providing module selection for the POSIX Shell, CPU Scheduler, Concurrency Primitives, Virtual File System, and Memory Management simulator.
+
+![OS Toolkit Main Menu](public/hero-preview.png)
+
+### 2. Interactive UNIX Shell Terminal Session (`shell.cpp`)
+Interactive shell session demonstrating ANSI-colored prompt, directory navigation (`cd`), file creation (`touch`), directory listing (`ls`), and file system manipulation (`rm -r`).
+
+![POSIX UNIX Shell Terminal Session](public/unix-shell-terminal.png)
+
+---
+
 ## 🛠️ Toolkit Modules Overview
 
 ### 1. 🐚 POSIX UNIX Shell Terminal Interface (`shell.cpp` & `shell.h`)

@@ -5,13 +5,13 @@
 [![GCC / G++](https://img.shields.io/badge/Compiler-GCC_%2F_G%2B%2B-5C6F84?style=for-the-badge&logo=gnu)](https://gcc.gnu.org/)
 [![Linux / Unix](https://img.shields.io/badge/Platform-Linux_%2F_POSIX-FCC624?style=for-the-badge&logo=linux)](https://www.kernel.org/)
 
-**POSIX OS Toolkit** is a low-level Systems Programming & Operating Systems suite implemented in C++20. Developed as a collaborative team project during an Operating Systems course, it combines an interactive POSIX-compliant UNIX Command Shell, a CPU Process Scheduling engine, a Multi-Thread Synchronization module (using `std::binary_semaphore`), an Inode Virtual File System, and a Paging Memory Management simulator.
+**POSIX OS Toolkit** is a low-level Systems Programming & Operating Systems suite implemented in C++20. It combines an interactive POSIX-compliant UNIX Command Shell, a CPU Process Scheduling engine, a Multi-Thread Synchronization module (using `std::binary_semaphore`), an Inode Virtual File System, and a Paging Memory Management simulator.
 
 ---
 
-## 👥 Authorship & Technical Contributions
+## 👥 Module Ownership & Technical Contributions
 
-This project was developed as a collaborative Operating Systems Laboratory team project. The primary systems module engineered by **Muhammad Ali (`m-ali-swe`)** is the **Interactive POSIX UNIX Shell Terminal Interface** ([`shell.cpp`](file:///d:/Workspace/repositories/personal/posix-os-toolkit-cpp/shell.cpp) & [`shell.h`](file:///d:/Workspace/repositories/personal/posix-os-toolkit-cpp/shell.h)):
+The primary core systems module engineered by **Muhammad Ali (`m-ali-swe`)** is the **Interactive POSIX UNIX Shell Terminal Interface** ([`shell.cpp`](file:///d:/Workspace/repositories/personal/posix-os-toolkit-cpp/shell.cpp) & [`shell.h`](file:///d:/Workspace/repositories/personal/posix-os-toolkit-cpp/shell.h)):
 
 - 🐚 **Process Creation & Process Lifecycle Management**:
   - Implemented low-level process cloning via `fork()` and process space replacement using `execvp()` with dynamic C-style argument pointers (`char** argv`).

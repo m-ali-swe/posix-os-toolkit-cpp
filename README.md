@@ -9,6 +9,12 @@
 
 ---
 
+## 👥 Project Context
+
+This toolkit was developed as a collaborative software engineering team project focused on low-level POSIX operating system mechanisms, process lifecycle scheduling, concurrency synchronization, virtual file systems, and memory management.
+
+---
+
 ## 🛠️ Toolkit Modules Overview
 
 ### 1. 🐚 POSIX UNIX Shell Terminal Interface (`shell.cpp` & `shell.h`)

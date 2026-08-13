@@ -9,26 +9,26 @@
 
 ---
 
-## 👥 Core Module Ownership
-
-- 🐚 **POSIX UNIX Shell Interface (`shell.cpp` & `shell.h`)**: Lead Systems Developer — [Muhammad Ali](https://github.com/m-ali-swe)
-- ⏱️ **CPU Process Scheduler (`scheduler.cpp`)**: Core Systems Module
-- 🧵 **POSIX Threading & Concurrency (`threads.cpp`)**: Core Systems Module
-- 📂 **Inode Virtual File System (`filesystem.cpp`)**: Core Systems Module
-- 🧠 **Virtual Memory & Page Table Engine (`memory.cpp`)**: Core Systems Module
-
----
-
 ## 🛠️ Toolkit Modules Overview
 
-### 1. 🐚 POSIX UNIX Shell Terminal Interface (`shell.cpp`)
-Interactive UNIX command-line interpreter implementing low-level POSIX system call interfaces:
-- **Process Creation & Lifecycle Management**: Implements process cloning via `fork()` and executable space replacement via `execvp()` with dynamic C-style argument pointers (`char** argv`). Uses `waitpid()` to collect exit status codes and prevent zombie process accumulation.
-- **Inter-Process Pipeline Architecture (`|`)**: Supports multi-stage command chaining (`cmd1 | cmd2 | cmd3`) via `pipe(int pipefd[2])` data channels and `dup2()` file descriptor redirection.
-- **File Descriptor I/O Redirection (`<`, `>`, `>>`)**: Manages input reading (`<`), output truncating (`>`), and output appending (`>>`) using POSIX `open()` flags (`O_RDONLY`, `O_WRONLY | O_CREAT | O_TRUNC/O_APPEND`).
-- **Asynchronous Background Execution (`&`)**: Trailing `&` execution runs child processes asynchronously in non-blocking background sub-shells.
-- **Signal Trapping (`SIGINT`)**: Custom handler for `SIGINT` (Ctrl+C) using `volatile sig_atomic_t` flags to maintain prompt loop responsiveness without crashing.
-- **Native Shell Built-ins & Dynamic Prompt**: Built-in `cd` (with `-` path tracking and `~` home resolution), `pwd` (using `getcwd()`), `history`, `echo`, `exit`, and an ANSI-colored prompt (`myShell@System:~/path$`).
+### 1. 🐚 POSIX UNIX Shell Terminal Interface (`shell.cpp` & `shell.h`)
+An interactive UNIX command-line shell implemented using low-level POSIX system calls:
+
+- 🐚 **Process Creation & Process Lifecycle Management**:
+  - Implemented low-level process cloning via `fork()` and process space replacement using `execvp()` with dynamic C-style argument pointers (`char** argv`).
+  - Added process synchronization with `waitpid()` to collect exit status codes and prevent zombie process accumulation.
+- ⚡ **Multi-Stage Inter-Process Pipeline Architecture (`|`)**:
+  - Engineered pipeline parsing and execution supporting multi-command chains (`cmd1 | cmd2 | cmd3`).
+  - Implemented data stream channeling via `pipe(int pipefd[2])` and file descriptor redirection using `dup2()`.
+- 📁 **File Descriptor I/O Redirection (`<`, `>`, `>>`)**:
+  - Built file redirection mechanisms handling input reading (`<`), output truncating (`>`), and output appending (`>>`) using POSIX `open()` flags (`O_RDONLY`, `O_WRONLY | O_CREAT | O_TRUNC/O_APPEND`).
+- ⚡ **Asynchronous Background Execution (`&`)**:
+  - Handled trailing `&` execution to run non-blocking child processes in background sub-shells.
+- 🛑 **Signal Trapping & Interrupt Handling (`SIGINT`)**:
+  - Built a custom signal handler for `SIGINT` (Ctrl+C) using `volatile sig_atomic_t` flags to prevent shell crash while preserving interactive prompt loops.
+- 💻 **Native Shell Built-ins & Dynamic Prompt**:
+  - Built native shell built-ins: `cd` (with `-` previous path tracking and `~` home resolution), `pwd` (using `getcwd()`), `history`, `echo`, and `exit`.
+  - Created an ANSI-colored dynamic terminal prompt `myShell@System:~/path$`.
 
 ---
 

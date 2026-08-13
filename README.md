@@ -20,10 +20,10 @@ This toolkit was developed as a collaborative software engineering team project 
 ### 1. 🐚 POSIX UNIX Shell Terminal Interface (`shell.cpp` & `shell.h`)
 An interactive UNIX command-line shell implemented using low-level POSIX system calls:
 
-- 🐚 **Process Creation & Process Lifecycle Management**:
+- ⚙️ **Process Creation & Process Lifecycle Management**:
   - Implemented low-level process cloning via `fork()` and process space replacement using `execvp()` with dynamic C-style argument pointers (`char** argv`).
   - Added process synchronization with `waitpid()` to collect exit status codes and prevent zombie process accumulation.
-- ⚡ **Multi-Stage Inter-Process Pipeline Architecture (`|`)**:
+- 🔗 **Multi-Stage Inter-Process Pipeline Architecture (`|`)**:
   - Engineered pipeline parsing and execution supporting multi-command chains (`cmd1 | cmd2 | cmd3`).
   - Implemented data stream channeling via `pipe(int pipefd[2])` and file descriptor redirection using `dup2()`.
 - 📁 **File Descriptor I/O Redirection (`<`, `>`, `>>`)**:
